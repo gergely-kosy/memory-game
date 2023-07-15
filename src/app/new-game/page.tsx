@@ -2,15 +2,40 @@
 
 import SingleItem from "@/components/SingleItem";
 import { GridContainer } from "@/lib/styled";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const NewGame = () => {
   const [previousNumberIndex, setPreviousNumberIndex] = useState<number | null>();
   const [foundNumberIndexes, setFoundNumberIndexes] = useState<number[]>([]);
   const [guessNumberIndexes, setGuessNumberIndexes] = useState<number[]>([]);
-
+  
   const numbers = [1,2,3,4,5,6,7,8];
-  const finalNumbers = [...numbers, ...numbers];
+  const [finalNumbers, setFinalNumbers] = useState<number[]>([...numbers, ...numbers]);
+
+  useEffect(() => {
+    shuffle();
+  }, []);
+
+  const shuffle = () => {
+    let tempArray = [...finalNumbers];
+    let currentIndex = tempArray.length;
+    let randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [tempArray[currentIndex], tempArray[randomIndex]] = [
+        tempArray[randomIndex], tempArray[currentIndex]];
+    }
+    setFinalNumbers(tempArray)
+    console.log(tempArray)
+  }
+
 
 
   const checkMatchAndStore = (index: number) => {
@@ -18,7 +43,7 @@ const NewGame = () => {
       const previousNum = handleVisibility(index);
   
       if (!foundNumberIndexes.includes(index)) {
-        if ((previousNum === 0 || previousNum) && (finalNumbers[previousNum] === finalNumbers[index])) {
+        if (finalNumbers && (previousNum === 0 || previousNum) && (finalNumbers[previousNum] === finalNumbers[index])) {
           setFoundNumberIndexes([...foundNumberIndexes, previousNum, index]);
         }
         
@@ -39,7 +64,7 @@ const NewGame = () => {
 
 
   const handleShowNumbers = () => {
-    return finalNumbers.map((number, index) => {
+    return finalNumbers?.map((number, index) => {
       const matched = foundNumberIndexes.includes(index);
       const isVisible = guessNumberIndexes.includes(index);
       

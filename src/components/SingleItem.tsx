@@ -12,7 +12,7 @@ const SingleItem = ({ number, index, isVisible, matched, checkMatch }:
     const handleOnClick = () => {
         checkMatch(index);
     }
-    return <button style={{ background: matched ? 'yellow' : '' }} onClick={() => handleOnClick()}>
+    return <button style={{ background: matched ? 'lightgreen' : '' }} onClick={() => handleOnClick()}>
             {matched ? number : isVisible && number}
         </button>
 }

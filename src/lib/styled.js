@@ -41,10 +41,8 @@ export const HomeContainer = styled.div`
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto;
-  background-color: rgb(239 239 239);
   padding: 40px;
   height: 500px;
-  border: 1px solid black;
 
   .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
