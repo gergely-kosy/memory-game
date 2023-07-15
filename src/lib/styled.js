@@ -10,6 +10,7 @@ export const MainContainer = styled.div`
   border-radius: 20px;
   border: 1px solid #000;
   color: #000;
+  position: relative;
 `
 
 export const HomeContainer = styled.div`
@@ -19,7 +20,7 @@ export const HomeContainer = styled.div`
     position: relative;
 
     h1 {
-        margin-top: 150px;
+        margin: 150px 0 50px 0;
         text-align: center;
     }
 
@@ -39,21 +40,36 @@ export const HomeContainer = styled.div`
 `
 
 export const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  padding: 40px;
-  height: 500px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
 
-  .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    text-align: center;
-    height: 100%;
-    width: 100%;
-  }
-
-  button {
-    width: 100%;
-    height: 100%;
-  }
+    > div {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        padding: 50px;
+        height: 600px;
+      
+        .grid-item {
+          background-color: rgba(255, 255, 255, 0.8);
+          text-align: center;
+          height: 100%;
+          width: 100%;
+          position: relative;
+        }
+      
+        button {
+          height: 120px;
+          width: 120px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          top: 0;
+          bottom: 0;
+        }
+    }
 `

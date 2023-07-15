@@ -75,11 +75,11 @@ const NewGame = () => {
   }
 
 
-  return <div>
-      <GridContainer>
+  return <GridContainer>
+      <div>
         {handleShowNumbers()}
-      </GridContainer>
-  </div>
+      </div>
+  </GridContainer>
 }
 
 export default NewGame;

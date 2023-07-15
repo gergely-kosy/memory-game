@@ -6,7 +6,7 @@ const Home = () => {
     return <HomeContainer>
         <h1>Game instructions</h1>
         <p>Description...</p>
-        <Link href="/new-game">Play</Link>
+        <Link href="/game">Play</Link>
     </HomeContainer>
 }
 
