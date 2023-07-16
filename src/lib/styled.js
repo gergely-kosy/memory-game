@@ -19,7 +19,7 @@ export const HomeContainer = styled.div`
     flex-direction: column;
     position: relative;
 
-    h1 {
+    > h1 {
         margin: 150px 0 50px 0;
         text-align: center;
     }
@@ -64,6 +64,8 @@ export const GridContainer = styled.div`
     }
 `
 
+
+
 export const NumberButton = styled.button`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border: none;
@@ -99,6 +101,9 @@ export const PlayButton = styled.button`
     background: #141414;
     cursor: pointer;
   }
+
+  margin: auto;
+  display: block;
 `
 
 export const WinnerContainer = styled.div`
@@ -108,15 +113,49 @@ export const WinnerContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    top: 40%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    padding-top: 30% !important;
+
+    width: 80%;
+    margin: auto;
+    height: 100%;
+
+    > div {
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      > div {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        > div {
+          background: lightgreen;
+          height: 120px;
+          width: 120px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          text-align: center;
+          font-weight: 600;
+          font-size: 35px;
+
+          > p {
+            margin: 28px;
+          }
+        }
+      }
+    }
 
     > a {
-      position: relative;
+      position: absolute;
       left: 0;
       right: 0;
       margin: 50px auto;
+      bottom: 50px;
     }
   }
 `
