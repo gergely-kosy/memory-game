@@ -213,6 +213,7 @@ export const ChangeNumberContainer = styled.div`
     height: 120px;
     width: 120px;
     margin: 20px auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     > input {
       font-weight: 600;
       font-size: 35px;

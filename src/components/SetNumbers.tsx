@@ -47,8 +47,9 @@ const SetNumbers = ({ setCustomNumbers }: { setCustomNumbers: (customNumber: num
         open={open}
         size='small'
         trigger={<SetCustomNumbersButton>Set custom numbers</SetCustomNumbersButton>}
+        style={{ borderRadius: "20px" }}
       >
-        <Modal.Content>
+        <Modal.Content style={{ borderRadius: "20px" }}>
             <ModalTitle>You can set your own custom numbers</ModalTitle>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <ChangeNumberContainer>
