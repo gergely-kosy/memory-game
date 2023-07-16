@@ -236,7 +236,7 @@ export const ChangeNumberContainer = styled.div`
 `
 
 export const ModalTitle = styled.p`
-  color: #000;
+  color: #505050;
   text-align: center;
   font-weight: 700;
   font-size: 25px;

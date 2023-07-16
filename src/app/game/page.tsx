@@ -12,7 +12,7 @@ const NewGame = () => {
   const [guessNumberIndexes, setGuessNumberIndexes] = useState<number[]>([]);
 
   const [foundNumberIndexes, setFoundNumberIndexes] = useState<number[]>(() => {
-    const foundNumbersStatus = localStorage.getItem("foundNumberIndexes");
+    const foundNumbersStatus = typeof localStorage !== "undefined" ? localStorage.getItem("foundNumberIndexes") : null;
     const initialValue = foundNumbersStatus && JSON.parse(foundNumbersStatus);
 
     return initialValue || []
@@ -21,7 +21,7 @@ const NewGame = () => {
   
   const numbers = [1,2,3,4,5,6,7,8];
   const [finalNumbers, setFinalNumbers] = useState<number[]>(() => {
-    const finalNumbersStatus = localStorage.getItem("finalNumbers");
+    const finalNumbersStatus = typeof localStorage !== "undefined" ? localStorage.getItem("finalNumbers") : null;
     const initialValue = finalNumbersStatus && JSON.parse(finalNumbersStatus);
 
     return initialValue || [...numbers, ...numbers]
