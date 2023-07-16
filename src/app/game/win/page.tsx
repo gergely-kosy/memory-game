@@ -5,7 +5,11 @@ import { PlayButton, WinnerContainer } from "@/lib/styled";
 const Home = () => {
     return <WinnerContainer>
         <div>
-            <h1>You win!</h1>
+            <div>
+                    <div><div><p>You</p></div></div>
+                    <div><div><p>win</p></div></div>
+                    <div><div><p>!</p></div></div>
+            </div>
             <Link href="/game">
                 <PlayButton>
                     Play again!
