@@ -3,6 +3,8 @@
 import SingleItem from "@/components/SingleItem";
 import { GridContainer } from "@/lib/styled";
 import React, { useEffect, useState } from "react";
+import { redirect } from 'next/navigation'
+
 
 const NewGame = () => {
   const [previousNumberIndex, setPreviousNumberIndex] = useState<number | null>();
@@ -12,9 +14,16 @@ const NewGame = () => {
   const numbers = [1,2,3,4,5,6,7,8];
   const [finalNumbers, setFinalNumbers] = useState<number[]>([...numbers, ...numbers]);
 
+  
   useEffect(() => {
     shuffle();
   }, []);
+
+  useEffect(() => {
+    if (foundNumberIndexes.length === 16) {
+      redirect("/game/win");
+    }
+  }, [foundNumberIndexes])
 
   const shuffle = () => {
     let tempArray = [...finalNumbers];
