@@ -182,8 +182,24 @@ export const DefaultButton = styled.button`
 
 export const SubmitContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 20px 0 10px;
+
+  > div {
+    text-align: center;
+    margin-bottom: 25px !important;
+    font-size: 14px !important;
+  }
+
+  > p {
+    color: #dd0000;
+    text-align: center;
+  }
+  > button {
+    width: fit-content;
+    margin: auto !important;
+  }
 `
 
 export const ChangeNumberContainer = styled.div`
@@ -216,5 +232,13 @@ export const ChangeNumberContainer = styled.div`
       -moz-appearance: textfield;
     }
   }
+`
 
+export const ModalTitle = styled.p`
+  color: #000;
+  text-align: center;
+  font-weight: 700;
+  font-size: 25px;
+  width: 40%;
+  margin: 20px auto;
 `

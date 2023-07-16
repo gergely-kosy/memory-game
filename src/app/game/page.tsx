@@ -33,7 +33,7 @@ const NewGame = () => {
     const foundNumbers = foundNumbersStatus && JSON.parse(foundNumbersStatus);
 
     if (!foundNumbers || foundNumbers.length === 0) {
-      shuffle();
+      shuffle(finalNumbers);
     }
   }, []);
 
@@ -51,8 +51,8 @@ const NewGame = () => {
     localStorage.removeItem("finalNumbers");
   }
 
-  const shuffle = () => {
-    let tempArray = [...finalNumbers];
+  const shuffle = (array: number[]) => {
+    let tempArray = [...array];
     let currentIndex = tempArray.length;
     let randomIndex;
   
@@ -114,9 +114,14 @@ const NewGame = () => {
     window.location.reload();
   }
 
+  const setCustomNumbers = (customNumbers: number[]) => {
+    shuffle(customNumbers);
+    window.location.reload();
+  }
+
 
   return <GridContainer>
-      <SetNumbers />
+      <SetNumbers setCustomNumbers={setCustomNumbers} />
       <div>
         {handleShowNumbers()}
       </div>

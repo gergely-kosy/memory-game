@@ -1,10 +1,9 @@
-import { ChangeNumberContainer, DefaultButton, SetCustomNumbersButton, SubmitContainer } from '@/lib/styled';
-import React, { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react'
-import { Icon, Input, Modal } from 'semantic-ui-react'
+import { ChangeNumberContainer, ModalTitle, SetCustomNumbersButton, SubmitContainer } from '@/lib/styled';
+import React, { Dispatch, FormEvent, SetStateAction, useState } from 'react'
+import { Button, Input, Modal } from 'semantic-ui-react'
 
-const SetNumbers = () => {
+const SetNumbers = ({ setCustomNumbers }: { setCustomNumbers: (customNumber: number[]) => void }) => {
   const [open, setOpen] = useState(false);
-  const [customNumbers, setCustomNumbers] = useState<number[]>([]);
   const [number01, setNumber01] = useState("");
   const [number02, setNumber02] = useState("");
   const [number03, setNumber03] = useState("");
@@ -13,10 +12,6 @@ const SetNumbers = () => {
   const [number06, setNumber06] = useState("");
   const [number07, setNumber07] = useState("");
   const [number08, setNumber08] = useState("");
-
-  useEffect(() => {
-    console.log(customNumbers)
-  }, [customNumbers])
 
   const handleSetNumbers = (value: string, setNumber: Dispatch<SetStateAction<string>>) => {
       const tempValue = parseInt(value);
@@ -28,8 +23,20 @@ const SetNumbers = () => {
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    console.log("ehh")
     e.preventDefault();
+
+    const tempArray = [
+        parseInt(number01), 
+        parseInt(number02), 
+        parseInt(number03), 
+        parseInt(number04), 
+        parseInt(number05), 
+        parseInt(number06), 
+        parseInt(number07), 
+        parseInt(number08)
+    ];
+    setCustomNumbers([...tempArray, ...tempArray]);
+
     setOpen(false);
   }
 
@@ -41,8 +48,8 @@ const SetNumbers = () => {
         size='small'
         trigger={<SetCustomNumbersButton>Set custom numbers</SetCustomNumbersButton>}
       >
-        <Modal.Header>You can set your own custom numbers</Modal.Header>
         <Modal.Content>
+            <ModalTitle>You can set your own custom numbers</ModalTitle>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <ChangeNumberContainer>
                     <Input placeholder="1" value={number01} type="number" onChange={e => handleSetNumbers(e.target.value, setNumber01)} required />
@@ -55,9 +62,9 @@ const SetNumbers = () => {
                     <Input placeholder="8" value={number08} type="number" onChange={e => handleSetNumbers(e.target.value, setNumber08)} required />
                 </ChangeNumberContainer>
                 <SubmitContainer>
-                    <DefaultButton type="submit" >
-                        <Icon name='checkmark' /> Submit
-                    </DefaultButton>
+                    <Button style={{ fontSize: '18px', borderRadius: '10px' }} type="submit" secondary >
+                        Submit
+                    </Button>
                 </SubmitContainer>
             </form>
         </Modal.Content>
