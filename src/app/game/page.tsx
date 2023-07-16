@@ -4,6 +4,7 @@ import SingleItem from "@/components/SingleItem";
 import { GridContainer, ResetButton } from "@/lib/styled";
 import React, { useEffect, useState } from "react";
 import { redirect } from 'next/navigation'
+import SetNumbers from "@/components/SetNumbers";
 
 
 const NewGame = () => {
@@ -11,7 +12,7 @@ const NewGame = () => {
   const [guessNumberIndexes, setGuessNumberIndexes] = useState<number[]>([]);
 
   const [foundNumberIndexes, setFoundNumberIndexes] = useState<number[]>(() => {
-    const foundNumbersStatus = localStorage.getItem("foundNumberIndexes");
+    const foundNumbersStatus = typeof localStorage !== "undefined" ? localStorage.getItem("foundNumberIndexes") : null;
     const initialValue = foundNumbersStatus && JSON.parse(foundNumbersStatus);
 
     return initialValue || []
@@ -20,7 +21,7 @@ const NewGame = () => {
   
   const numbers = [1,2,3,4,5,6,7,8];
   const [finalNumbers, setFinalNumbers] = useState<number[]>(() => {
-    const finalNumbersStatus = localStorage.getItem("finalNumbers");
+    const finalNumbersStatus = typeof localStorage !== "undefined" ? localStorage.getItem("finalNumbers") : null;
     const initialValue = finalNumbersStatus && JSON.parse(finalNumbersStatus);
 
     return initialValue || [...numbers, ...numbers]
@@ -32,7 +33,7 @@ const NewGame = () => {
     const foundNumbers = foundNumbersStatus && JSON.parse(foundNumbersStatus);
 
     if (!foundNumbers || foundNumbers.length === 0) {
-      shuffle();
+      shuffle(finalNumbers);
     }
   }, []);
 
@@ -50,8 +51,8 @@ const NewGame = () => {
     localStorage.removeItem("finalNumbers");
   }
 
-  const shuffle = () => {
-    let tempArray = [...finalNumbers];
+  const shuffle = (array: number[]) => {
+    let tempArray = [...array];
     let currentIndex = tempArray.length;
     let randomIndex;
   
@@ -113,8 +114,14 @@ const NewGame = () => {
     window.location.reload();
   }
 
+  const setCustomNumbers = (customNumbers: number[]) => {
+    shuffle(customNumbers);
+    window.location.reload();
+  }
+
 
   return <GridContainer>
+      <SetNumbers setCustomNumbers={setCustomNumbers} />
       <div>
         {handleShowNumbers()}
       </div>
