@@ -1,29 +1,54 @@
 'use client';
 
 import SingleItem from "@/components/SingleItem";
-import { GridContainer } from "@/lib/styled";
+import { GridContainer, ResetButton } from "@/lib/styled";
 import React, { useEffect, useState } from "react";
 import { redirect } from 'next/navigation'
 
 
 const NewGame = () => {
   const [previousNumberIndex, setPreviousNumberIndex] = useState<number | null>();
-  const [foundNumberIndexes, setFoundNumberIndexes] = useState<number[]>([]);
   const [guessNumberIndexes, setGuessNumberIndexes] = useState<number[]>([]);
+
+  const [foundNumberIndexes, setFoundNumberIndexes] = useState<number[]>(() => {
+    const foundNumbersStatus = localStorage.getItem("foundNumberIndexes");
+    const initialValue = foundNumbersStatus && JSON.parse(foundNumbersStatus);
+
+    return initialValue || []
+  });
+
   
   const numbers = [1,2,3,4,5,6,7,8];
-  const [finalNumbers, setFinalNumbers] = useState<number[]>([...numbers, ...numbers]);
+  const [finalNumbers, setFinalNumbers] = useState<number[]>(() => {
+    const finalNumbersStatus = localStorage.getItem("finalNumbers");
+    const initialValue = finalNumbersStatus && JSON.parse(finalNumbersStatus);
+
+    return initialValue || [...numbers, ...numbers]
+  });
 
   
   useEffect(() => {
-    shuffle();
+    const foundNumbersStatus = localStorage.getItem("foundNumberIndexes");
+    const foundNumbers = foundNumbersStatus && JSON.parse(foundNumbersStatus);
+
+    if (!foundNumbers || foundNumbers.length === 0) {
+      shuffle();
+    }
   }, []);
 
   useEffect(() => {
+    localStorage.setItem("foundNumberIndexes", JSON.stringify(foundNumberIndexes));
+
     if (foundNumberIndexes.length === 16) {
+      resetProgress();
       redirect("/game/win");
     }
   }, [foundNumberIndexes])
+
+  const resetProgress = () => {
+    localStorage.removeItem("foundNumberIndexes");
+    localStorage.removeItem("finalNumbers");
+  }
 
   const shuffle = () => {
     let tempArray = [...finalNumbers];
@@ -41,6 +66,7 @@ const NewGame = () => {
       [tempArray[currentIndex], tempArray[randomIndex]] = [
         tempArray[randomIndex], tempArray[currentIndex]];
     }
+    localStorage.setItem("finalNumbers", JSON.stringify(tempArray));
     setFinalNumbers(tempArray)
   }
 
@@ -82,11 +108,19 @@ const NewGame = () => {
     })
   }
 
+  const reset = () => {
+    resetProgress();
+    window.location.reload();
+  }
+
 
   return <GridContainer>
       <div>
         {handleShowNumbers()}
       </div>
+      <ResetButton onClick={reset}>
+          Reset
+      </ResetButton>
   </GridContainer>
 }
 
