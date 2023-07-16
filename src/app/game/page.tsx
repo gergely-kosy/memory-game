@@ -33,7 +33,6 @@ const NewGame = () => {
         tempArray[randomIndex], tempArray[currentIndex]];
     }
     setFinalNumbers(tempArray)
-    console.log(tempArray)
   }
 
 
