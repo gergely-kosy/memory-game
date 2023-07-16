@@ -24,8 +24,9 @@ export const HomeContainer = styled.div`
         text-align: center;
     }
 
-    p {
+    > p {
         text-align: center;
+        padding: 0 160px;
     }
 
     > a {
@@ -82,5 +83,40 @@ export const NumberButton = styled.button`
   p {
     font-weight: 600;
     font-size: 35px;
+  }
+`
+
+export const PlayButton = styled.button`
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #505050;
+  color: #fff;
+  padding: 10px 50px;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 10px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: #141414;
+    cursor: pointer;
+  }
+`
+
+export const WinnerContainer = styled.div`
+  height: 100%;
+
+  > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    > a {
+      position: relative;
+      left: 0;
+      right: 0;
+      margin: 50px auto;
+    }
   }
 `

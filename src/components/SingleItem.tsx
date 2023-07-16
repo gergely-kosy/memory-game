@@ -17,6 +17,8 @@ const SingleItem = ({ number, index, isVisible, matched, checkMatch }:
         style={{ 
             background: matched ? 'lightgreen' : isVisible ? '#505050' : '',
             color: matched ? '' : isVisible ? 'white' : '',
+            cursor: matched ? '' : 'pointer',
+            boxShadow: matched ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : ''
         }} 
         onClick={() => handleOnClick()}>
             <p>
