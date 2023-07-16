@@ -1,3 +1,4 @@
+import { NumberButton } from "@/lib/styled";
 import React from "react";
 
 const SingleItem = ({ number, index, isVisible, matched, checkMatch }: 
@@ -12,9 +13,18 @@ const SingleItem = ({ number, index, isVisible, matched, checkMatch }:
     const handleOnClick = () => {
         checkMatch(index);
     }
-    return <button style={{ background: matched ? 'lightgreen' : '' }} onClick={() => handleOnClick()}>
-            {matched ? number : isVisible && number}
-        </button>
+    return <NumberButton 
+        style={{ 
+            background: matched ? 'lightgreen' : isVisible ? '#505050' : '',
+            color: matched ? '' : isVisible ? 'white' : '',
+            cursor: matched ? '' : 'pointer',
+            boxShadow: matched ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : ''
+        }} 
+        onClick={() => handleOnClick()}>
+            <p>
+                {matched ? number : isVisible && number}
+            </p>
+        </NumberButton>
 }
 
 export default SingleItem;
