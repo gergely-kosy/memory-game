@@ -4,6 +4,7 @@ import SingleItem from "@/components/SingleItem";
 import { GridContainer, ResetButton } from "@/lib/styled";
 import React, { useEffect, useState } from "react";
 import { redirect } from 'next/navigation'
+import SetNumbers from "@/components/SetNumbers";
 
 
 const NewGame = () => {
@@ -115,6 +116,7 @@ const NewGame = () => {
 
 
   return <GridContainer>
+      <SetNumbers />
       <div>
         {handleShowNumbers()}
       </div>

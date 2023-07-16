@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export const MainContainer = styled.div`
   margin: auto;
   width: 700px;
-  height: 800px;
+  height: 830px;
   background: #fff;
   border-radius: 20px;
   border: 1px solid #000;
@@ -42,7 +42,7 @@ export const HomeContainer = styled.div`
 
 export const GridContainer = styled.div`
     position: absolute;
-    top: 47%;
+    top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     left: 0;
@@ -52,7 +52,7 @@ export const GridContainer = styled.div`
         display: grid;
         grid-template-columns: auto auto auto auto;
         padding: 50px;
-        height: 600px;
+        height: 700px;
       
         .grid-item {
           background-color: rgba(255, 255, 255, 0.8);
@@ -141,4 +141,80 @@ export const ResetButton = styled.button`
     background: #141414;
     cursor: pointer;
   }
+`
+
+export const SetCustomNumbersButton = styled.button`
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #505050;
+  color: #fff;
+  padding: 10px 30px;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 10px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: #141414;
+    cursor: pointer;
+  }
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: fit-content;
+  top: -30px;
+`
+
+export const DefaultButton = styled.button`
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #505050;
+  color: #fff;
+  padding: 10px 30px;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 10px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: #141414;
+    cursor: pointer;
+  }
+`
+
+export const SubmitContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 10px;
+`
+
+export const ChangeNumberContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+
+  > div {
+    height: 120px;
+    width: 120px;
+    margin: 20px auto;
+    > input {
+      font-weight: 600;
+      font-size: 35px;
+      padding: 10px !important;
+      text-align: center !important;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+
 `
