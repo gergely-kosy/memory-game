@@ -1,9 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { GridContainer, PlayButton, WinnerContainer } from "@/lib/styled";
+import { PlayButton, WinnerContainer } from "@/lib/styled";
 
 const Home = () => {
-    const helperArray = [...Array(16)];
     return <WinnerContainer>
         <div>
             <div>
