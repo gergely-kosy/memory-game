@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export const MainContainer = styled.div`
   margin: auto;
   width: 700px;
-  height: 700px;
+  height: 800px;
   background: #fff;
   border-radius: 20px;
   border: 1px solid #000;
@@ -42,7 +42,7 @@ export const HomeContainer = styled.div`
 
 export const GridContainer = styled.div`
     position: absolute;
-    top: 50%;
+    top: 47%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     left: 0;
@@ -118,5 +118,27 @@ export const WinnerContainer = styled.div`
       right: 0;
       margin: 50px auto;
     }
+  }
+`
+
+export const ResetButton = styled.button`
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  bottom: -30px;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #505050;
+  color: #fff;
+  padding: 10px 50px;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 10px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: #141414;
+    cursor: pointer;
   }
 `
